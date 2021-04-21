@@ -7,7 +7,7 @@
 |last_name           |string |null: false              |
 |first_furigana      |string |null: false              |
 |last_furigana       |string |null: false              |
-|birthdate           |date   |null: false              |
+|birth_date          |date   |null: false              |
 |email               |string |unique: true, null: false|
 |encrypted_password  |string |null: false              |
 
