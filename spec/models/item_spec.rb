@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-    
+
     context '商品の出品ができない時' do
       it 'titleが空では出品できない' do
         @item.title = ''
@@ -28,37 +28,37 @@ RSpec.describe Item, type: :model do
       it 'category_idが選ばれていないと出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category Select"
+        expect(@item.errors.full_messages).to include 'Category Select'
       end
 
       it 'product_state_idが選ばれていないと出品できない' do
         @item.product_state_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Product state Select"
+        expect(@item.errors.full_messages).to include 'Product state Select'
       end
 
       it 'delivery_charge_idが選ばれていないと出品できない' do
         @item.delivery_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Delivery charge Select"
+        expect(@item.errors.full_messages).to include 'Delivery charge Select'
       end
 
       it 'city_idが選ばれていないと出品できない' do
         @item.city_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "City Select"
+        expect(@item.errors.full_messages).to include 'City Select'
       end
 
       it 'city_idが選ばれていないと出品できない' do
         @item.city_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "City Select"
+        expect(@item.errors.full_messages).to include 'City Select'
       end
 
       it 'days_to_delivery_idが選ばれていないと出品できない' do
         @item.days_to_delivery_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Days to delivery Select"
+        expect(@item.errors.full_messages).to include 'Days to delivery Select'
       end
 
       it 'priceが空では出品できない' do
@@ -86,7 +86,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceは9999999以内でなければ登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price Out of setting range'
       end
@@ -96,11 +96,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Image can't be blank"
       end
-
-
-
-
-
     end
   end
 end
