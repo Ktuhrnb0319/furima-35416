@@ -49,12 +49,6 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include 'City Select'
       end
 
-      it 'city_idが選ばれていないと出品できない' do
-        @item.city_id = 1
-        @item.valid?
-        expect(@item.errors.full_messages).to include 'City Select'
-      end
-
       it 'days_to_delivery_idが選ばれていないと出品できない' do
         @item.days_to_delivery_id = 1
         @item.valid?
