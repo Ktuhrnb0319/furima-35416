@@ -67,14 +67,20 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price can't be blank"
       end
 
-      it 'priceが空では出品できない' do
-        @item.price = ''
-        @item.valid?
-        expect(@item.errors.full_messages).to include "Price can't be blank"
-      end
-
       it 'priceは半角数字でなければ登録できない' do
         @item.price = '３０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'Price Half-width number'
+      end
+
+      it 'priceは半角英数字混合では登録できない' do
+        @item.price = '300a'
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'Price Half-width number'
+      end
+
+      it 'priceは半角英字のみでは登録できない' do
+        @item.price = 'aaaa'
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price Half-width number'
       end
