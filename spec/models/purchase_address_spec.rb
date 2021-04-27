@@ -61,6 +61,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Telephone number Input only number')
       end
+      it 'telephone_numberは11桁以内でないと保存できないこと' do
+        @purchase_address.telephone_number = '0000000000'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Telephone number Input only number')
+      end
       it 'userが紐付いていないと保存できないこと' do
         @purchase_address.user_id = nil
         @purchase_address.valid?
