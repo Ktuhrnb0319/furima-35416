@@ -13,6 +13,10 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchase_address).to be_valid
       end
+      it 'buildingは空でも保存できること' do
+        @purchase_address.building = ''
+        expect(@purchase_address).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
@@ -46,10 +50,6 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.street = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Street can't be blank")
-      end
-      it 'buildingは空でも保存できること' do
-        @purchase_address.building = ''
-        expect(@purchase_address).to be_valid
       end
       it 'telephone_numberが空だと保存できないこと' do
         @purchase_address.telephone_number = ''
